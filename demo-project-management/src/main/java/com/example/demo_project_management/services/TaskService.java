@@ -1,5 +1,6 @@
 package com.example.demo_project_management.services;
 
+import com.example.demo_project_management.dto.ResponseRequest;
 import com.example.demo_project_management.dto.TaskRequest;
 import com.example.demo_project_management.entity.Project;
 import com.example.demo_project_management.entity.Task;
@@ -68,12 +69,25 @@ public class TaskService {
         return new ResponseEntity<>(taskList, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> deleteTaskById(Integer id) {
+    public ResponseEntity<?> deleteTaskById(Integer projectId ,Integer id) {
         Optional<Task> taskResponse = taskRepository.findById(id);
-        if (taskResponse.isPresent()) {
+        Optional<Project> project = projectRepository.findById(projectId);
+        if (taskResponse.isPresent() && project.isPresent()) {
             try {
+                List<Task> tasks = project.get().getTasks();
+
+                Task foundTask = tasks.stream()
+                        .filter(task -> task.getId() == id)
+                        .findFirst()
+                        .orElse(null);
+
+                tasks.remove(foundTask);
+                projectRepository.save(project.get());
+
                 taskRepository.deleteById(id);
-                return new ResponseEntity<>("delete Task Successfully", HttpStatus.OK);
+                ResponseRequest response = new ResponseRequest();
+                response.setMessage("delete Task Successfully");
+                return new ResponseEntity<>(response, HttpStatus.OK);
             } catch (Exception e) {
                 return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
             }

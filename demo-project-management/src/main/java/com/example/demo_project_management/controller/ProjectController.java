@@ -25,6 +25,16 @@ public class ProjectController {
         return projectService.getProject(id);
     }
 
+    @DeleteMapping("/{id}")
+    private ResponseEntity<?> deleteProjectById(@PathVariable("id") Integer id) {
+        return projectService.deleteProjectById(id);
+    }
+
+    @PutMapping("/{id}")
+    private ResponseEntity<?> projectUpdateById(@PathVariable("id") Integer id, @RequestBody Project project) {
+        return projectService.projectUpdateById(id, project);
+    }
+
     @GetMapping("/list")
     private ResponseEntity<?> getProjectList(){
         return projectService.getProjectList();
@@ -34,6 +44,7 @@ public class ProjectController {
     private ResponseEntity<?> getProjectTask(@PathVariable("id") Integer id) {
         return projectService.getProjectTask(id);
     }
+
 
 
 }

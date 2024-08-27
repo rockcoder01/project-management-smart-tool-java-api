@@ -35,9 +35,9 @@ public class TaskController {
         return new ResponseEntity<>(taskResponse, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
-    private ResponseEntity<?> deleteTaskById(@PathVariable("id") Integer id) {
-        return taskService.deleteTaskById(id);
+    @DeleteMapping("/{projectId}/{id}")
+    private ResponseEntity<?> deleteTaskById(@PathVariable("projectId") Integer projectId, @PathVariable("id") Integer id) {
+        return taskService.deleteTaskById(projectId,id);
     }
 
     @PutMapping("/{id}")

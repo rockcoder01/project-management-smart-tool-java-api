@@ -69,4 +69,29 @@ public class ProjectService {
                 }).collect(Collectors.toList());
         return new ResponseEntity<>(projectResponsesList, HttpStatus.OK);
     }
+
+    public ResponseEntity<?> deleteProjectById(Integer id) {
+        Optional<Project> project = projectRepository.findById(id);
+        if(project.isPresent()){
+            projectRepository.deleteById(id);
+           return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    public ResponseEntity<?> projectUpdateById(Integer id, Project updatedProject) {
+        Optional<Project> project = projectRepository.findById(id);
+        if(project.isPresent()){
+            project.get().setName(updatedProject.getName());
+            project.get().setDescription(updatedProject.getDescription());
+            projectRepository.save(project.get());
+
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+        }
+    }
 }

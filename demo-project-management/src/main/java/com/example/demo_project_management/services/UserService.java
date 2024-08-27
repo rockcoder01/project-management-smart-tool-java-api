@@ -23,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Service
 public class UserService {
 
@@ -51,13 +52,6 @@ public class UserService {
             for (String roleItem : userRequest.getRoles()) {
                 Roles roleEnum = Roles.valueOf(roleItem);
                 Role role = roleRepository.findByName(roleEnum);
-//            if (role == null) {
-//                // If the role doesn't exist, create and save it
-//                role = new Role();
-//                role.setName(roleEnum);
-//                role = roleRepository.save(role);  // Save the new role to the database
-//            }
-//            role.getUsers().add(user);
                 roles.add(role);
             }
             user.setRoles(roles);
@@ -68,14 +62,6 @@ public class UserService {
         }
     }
 
-//    public ResponseEntity<?> login(UserLoginDTO userCredentials) {
-//        return new ResponseEntity<>('d', HttpStatus.OK);
-//    }
-
-//    public AuthService(AuthenticationManager authenticationManager, UserDetailsService userDetailsService) {
-//        this.authenticationManager = authenticationManager;
-//        this.userDetailsService = userDetailsService;
-//    }
 
     public ResponseEntity<?> login(UserLoginDTO userCredentials) {
         try {
