@@ -41,7 +41,7 @@ public class UserService {
 
 
     @Transactional
-    public ResponseEntity<?> registerUser(UserRegisterDTO userRequest) {
+    public ResponseEntity<User> registerUser(UserRegisterDTO userRequest) {
         try {
             User user = new User();
             user.setName(userRequest.getName());
@@ -56,9 +56,9 @@ public class UserService {
             }
             user.setRoles(roles);
             User savedUser = userRepository.save(user);
-            return new ResponseEntity<>(savedUser, HttpStatus.OK);
+            return ResponseEntity.ok(savedUser);
         } catch (Exception e) {
-            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().build();
         }
     }
 

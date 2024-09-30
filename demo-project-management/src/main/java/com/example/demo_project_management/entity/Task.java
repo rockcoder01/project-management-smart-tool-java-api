@@ -5,7 +5,6 @@ import com.example.demo_project_management.enums.Status;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDateTime;
 
@@ -59,6 +58,4 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
-//    public void setTitle() {
-//    }
 }
