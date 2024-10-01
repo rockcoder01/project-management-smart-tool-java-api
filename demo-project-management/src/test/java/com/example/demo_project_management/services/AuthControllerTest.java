@@ -21,6 +21,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.*;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class AuthControllerTest {
 
     @Mock
@@ -60,9 +62,6 @@ class AuthControllerTest {
 
     @InjectMocks
     private UserService userService;
-//
-//    @InjectMocks
-//    private AuthController authController;
 
     @InjectMocks
     private AuthService authService;
@@ -124,10 +123,6 @@ class AuthControllerTest {
 
     @Test
     void testLogin_Success() {
-        // Mocking
-//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_ANOTHER");
-//        List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<>();
-//        updatedAuthorities.add(authority);
 
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
                 .thenReturn(authentication);
@@ -135,23 +130,12 @@ class AuthControllerTest {
         when(authentication.getPrincipal()).thenReturn(userDetails);
 
         when(userDetails.getUsername()).thenReturn("test@example.com");
-//        when(userDetails.getAuthorities()).thenReturn(
-//                Collections.singleton(new SimpleGrantedAuthority("DEVELOPER"))
-//        );
-
-//        when(jwtTokenUtil.generateToken(userDetails.getUsername())).thenReturn("mockToken");
 
         // Act
         ResponseEntity<?> responseEntity = userService.login(userLoginDTO);
 
         // Assert
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-//        AuthResponse authResponse = (AuthResponse) responseEntity.getBody();
-//        assertNotNull(authResponse);
-//        assertEquals("test@example.com", authResponse.getName());
-//        assertEquals("mockToken", authResponse.getToken());
-//        assertEquals(1, authResponse.getRoles().size());
-//        assertEquals("ROLE_USER", authResponse.getRoles().get(0));
     }
 
     @Test
