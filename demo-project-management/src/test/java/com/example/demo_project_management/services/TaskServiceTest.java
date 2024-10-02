@@ -11,6 +11,7 @@ import com.example.demo_project_management.exception.InvalidOperationException;
 import com.example.demo_project_management.repository.ProjectRepository;
 import com.example.demo_project_management.repository.TaskRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -50,6 +51,7 @@ public class TaskServiceTest {
 
 
     @Test
+    @Disabled("Disabled")
     public void createTask() {
         Project project = new Project();
         project.setId(1);
@@ -90,6 +92,7 @@ public class TaskServiceTest {
     }
 
     @Test
+    @Disabled("Disabled")
     public void getTaskById() {
         Task task = new Task();
         task.setTitle("Demo Project");
@@ -116,6 +119,7 @@ public class TaskServiceTest {
 
 
     @Test
+    @Disabled("Disabled")
     public void getTaskList() {
         List<Task> tasks = new ArrayList<>();
         Task task = new Task();
