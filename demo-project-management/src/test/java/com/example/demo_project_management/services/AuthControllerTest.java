@@ -38,7 +38,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.*;
 
 @SpringBootTest
-@WebMvcTest
 class AuthControllerTest {
 
     @Mock
