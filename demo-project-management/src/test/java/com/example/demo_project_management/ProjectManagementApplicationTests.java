@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Profile;
 @Disabled
 class ProjectManagementApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//	}
+	@Test
+	void contextLoads() {
+	}
 
 }
