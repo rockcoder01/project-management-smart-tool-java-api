@@ -31,8 +31,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-//@SpringBootTest
-@Disabled("Test class disabled for refactoring")
+@SpringBootTest
+//@Disabled("Test class disabled for refactoring")
 public class TaskServiceTest {
 
     @Mock
@@ -52,7 +52,6 @@ public class TaskServiceTest {
 
 
     @Test
-    @Disabled("Disabled")
     public void createTask() {
         Project project = new Project();
         project.setId(1);
