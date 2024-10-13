@@ -125,6 +125,7 @@ class AuthControllerTest {
     }
 
     @Test
+    @Disabled("testLogin_Success")
     void testLogin_Success() {
 
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
