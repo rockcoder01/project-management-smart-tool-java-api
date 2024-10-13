@@ -14,6 +14,14 @@
     <name>project-management</name>
     <description>Demo project for Spring Boot</description>
     <url/>
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
     <licenses>
         <license/>
     </licenses>
