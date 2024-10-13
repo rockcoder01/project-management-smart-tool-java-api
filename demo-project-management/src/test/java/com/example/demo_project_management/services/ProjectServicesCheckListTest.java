@@ -8,9 +8,11 @@ import com.example.demo_project_management.repository.ProjectRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,8 +24,8 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-//@SpringBootTest
-@Disabled("Test class disabled for refactoring")
+
+@ExtendWith(MockitoExtension.class)
 public class ProjectServicesCheckListTest {
 
     @Mock
@@ -38,7 +40,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void createProject_Success() {
         Project project = new Project();
         project.setId(1);
@@ -54,7 +55,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void createProject_Failure() {
         Project project = new Project();
         doThrow(new RuntimeException("Error")).when(projectRepository).save(any(Project.class));
@@ -66,7 +66,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void getProject_Success() {
         Project project = new Project();
         project.setId(1);
@@ -85,7 +84,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void getProject_Failure() {
         when(projectRepository.findById(1)).thenReturn(Optional.empty());
 
@@ -96,7 +94,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void getProjectTask_Success() {
         //create project mock
         Project project = new Project();
@@ -123,7 +120,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void getProjectTask_Failure() {
         when(projectRepository.findById(1)).thenReturn(Optional.empty());
 
@@ -134,7 +130,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void getProjectList_Success() {
         List<Project> projects = new ArrayList<>();
         Project project1 = new Project();
@@ -154,7 +149,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void deleteProjectById_Success() {
         Project project = new Project();
         project.setId(1);
@@ -169,7 +163,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void deleteProjectById_Failure() {
         when(projectRepository.findById(1)).thenReturn(Optional.empty());
 
@@ -180,7 +173,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void projectUpdateById_Success() {
         Project existingProject = new Project();
         existingProject.setId(1);
@@ -202,7 +194,6 @@ public class ProjectServicesCheckListTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void projectUpdateById_Failure() {
         when(projectRepository.findById(1)).thenReturn(Optional.empty());
 
