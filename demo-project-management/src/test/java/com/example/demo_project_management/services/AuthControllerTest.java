@@ -37,8 +37,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.*;
 
-//@SpringBootTest
-@Disabled("Test class disabled for refactoring")
+
+
+@ExtendWith(MockitoExtension.class)
 class AuthControllerTest {
 
     @Mock
@@ -85,7 +86,6 @@ class AuthControllerTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void testRegisterUser_Success() {
         // Arrange
         Role developerRole = new Role();
@@ -112,7 +112,6 @@ class AuthControllerTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void testRegisterUser_Exception() {
         // Arrange
         when(roleRepository.findByName(any(Roles.class))).thenThrow(new RuntimeException("Role not found"));
@@ -126,7 +125,6 @@ class AuthControllerTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void testLogin_Success() {
 
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
@@ -144,7 +142,6 @@ class AuthControllerTest {
     }
 
     @Test
-    @Disabled("Disabled")
     void testLogin_InvalidCredentials() {
         // Arrange
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
