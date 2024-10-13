@@ -37,4 +37,6 @@ jobs:
           SPRING_PROFILES_ACTIVE: test
         run: |
           cd demo-project-management  # Navigate to the correct directory
-          mvn clean verify sonar:sonar -Dsonar.projectKey=rockcoder01_project-management-smart-tool-java-api
+          mvn clean verify sonar:sonar \
+           -Dsonar.projectKey=rockcoder01_project-management-smart-tool-java-api \ 
+           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
