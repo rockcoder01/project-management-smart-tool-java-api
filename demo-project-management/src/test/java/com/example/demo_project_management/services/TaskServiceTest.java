@@ -35,6 +35,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class TaskServiceTest {
 
     @Mock
@@ -94,7 +95,6 @@ public class TaskServiceTest {
     }
 
     @Test
-    @Disabled("Disabled")
     public void getTaskById() {
         Task task = new Task();
         task.setTitle("Demo Project");
@@ -121,7 +121,6 @@ public class TaskServiceTest {
 
 
     @Test
-    @Disabled("Disabled")
     public void getTaskList() {
         List<Task> tasks = new ArrayList<>();
         Task task = new Task();
