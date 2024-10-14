@@ -39,7 +39,7 @@ import java.util.*;
 
 
 
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
 @Disabled("testtt")
 class AuthControllerTest {
 
